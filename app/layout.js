@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
 
           <footer className='bg-blue-50 py-12'>
             <div className='container mx-auto px-4 text-center text-gray-600'>
-              <div>&copy; {new Date().getFullYear()}. Todos direitos reservados.</div>
+              <div>&copy; {new Date().getFullYear()}. All rights reserved.</div>
             </div>
           </footer>
         </body>
