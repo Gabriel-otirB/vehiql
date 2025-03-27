@@ -167,7 +167,7 @@ export default function Home() {
       <section className='py-16 dotted-background text-white'>
         <div className='container mx-auto px-4 text-center'>
           <h2 className='text-3xl font-bold mb-4'>
-            Ready ti Find Your Dream Car?
+            Ready to Find Your Dream Car?
           </h2>
           <p className='text-xl text-blue-100 mb-8 max-w-2xl mx-auto'>
             Join thousands of satisfied customers who found their perfect vehicle through our platform.
