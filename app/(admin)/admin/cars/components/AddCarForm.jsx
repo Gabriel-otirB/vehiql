@@ -30,6 +30,9 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useDropzone } from 'react-dropzone';
 import { toast } from 'sonner';
+import { Loader, Loader2, Upload, X } from 'lucide-react';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 
 // Predefined options
 const fuelTypes = ["Petrol", "Diesel", "Electric", "Hybrid", "Plug-in Hybrid"];
@@ -99,7 +102,12 @@ const AddCarForm = () => {
   });
 
   const onSubmit = async (data) => {
+    if (uploadedImages.length === 0) {
+      setImageError("Please upload at least one image");
+      return;
+    }
 
+    addCar
   }
 
   const onMultiImagesDrop = (acceptedFiles) => {
@@ -114,34 +122,36 @@ const AddCarForm = () => {
     if (validFiles.length === 0) return;
 
     const newImages = []
-    validFiles.forEach(() => {
+    validFiles.forEach((file) => {
       const reader = new FileReader();
       reader.onloadend = (e) => {
         newImages.push(e.target.result);
 
-        if(newImages.length === validFiles.length){
+        if (newImages.length === validFiles.length) {
           setUploadedImages((prev) => [...prev, ...newImages]);
-          setImage("");
+          setImageError("");
+          toast.success(`Successfully uploaded ${validFiles.length} images`);
         }
-        toast.success("Image uploaded successfully")
-      };
-
-      reader.onerror = () => {
-        setIsUploading(false);
-        toast.error("Failed to reade the image")
       };
 
       reader.readAsDataURL(file);
     });
   };
 
-  const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
+  const {
+    getRootProps: getMultiImageRootProps,
+    getInputProps: getMultiImageInputProps,
+  } = useDropzone({
     onDrop: onMultiImagesDrop,
     accept: {
       "image/*": [".jpeg", ".jpg", ".png", ".webp"],
     },
     multiple: true,
   });
+
+  const removeImage = (index) => {
+    setUploadedImages((prev) => prev.filter((_, i) => i !== index));
+  }
 
   return (
     <div>
@@ -152,8 +162,8 @@ const AddCarForm = () => {
         onValueChange={setActiveTab}
       >
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="manual">Manual Entry</TabsTrigger>
-          <TabsTrigger value="ai">AI Upload</TabsTrigger>
+          <TabsTrigger value="manual" className="cursor-pointer" >Manual Entry</TabsTrigger>
+          <TabsTrigger value="ai" className="cursor-pointer" >AI Upload</TabsTrigger>
         </TabsList>
         <TabsContent value="manual" className="mt-6">
           <Card>
@@ -265,7 +275,7 @@ const AddCarForm = () => {
 
                   {/* Fuel Type */}
                   <div className="space-y-2">
-                    <Label htmlFor="fuelType">Fuel Type</Label>
+                    <Label htmlFor="fuelType" >Fuel Type</Label>
 
                     <Select
                       onValueChange={value => setValue("fuelType", value)}
@@ -277,7 +287,7 @@ const AddCarForm = () => {
                         <SelectValue placeholder="Select fuel type" />
                       </SelectTrigger>
 
-                      <SelectContent>
+                      <SelectContent >
                         {fuelTypes.map((type) => (
                           <SelectItem key={type} value={type}>
                             {type}
@@ -434,15 +444,74 @@ const AddCarForm = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="images">Images</Label>
+                  <Label
+                    htmlFor="images"
+                    className={imageError ? "text-red-500" : ""}
+                  >
+                    Images{" "}
+                    {imageError && <span className='text-red-500'>*</span>}
+                  </Label>
 
-                  <div>
-                    <div>
+                  <div {...getMultiImageRootProps()}
+                    className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer hover:bg-gray-50 transition mt-2 ${imageError ? "border-red-500" : "border-gray-300"
+                      }`}
+                  >
+                    <input {...getMultiImageInputProps()} />
+                    <div className='flex flex-col items-center justify-center'>
+                      <Upload className='h-12 w-12 text-gray-400 mb-3' />
+                      <p className='text-gray-600 text-sm'>
+                        Drag & drop or click to upload multiple images
+                      </p>
 
+                      <p className='text-gray-500 text-xs mt-1'>
+                        (JPG, PNG, WebP, max 5MB each)
+                      </p>
                     </div>
                   </div>
+                  {imageError && (
+                    <p className='text-xs text-red-500 mt-1'>{imageError}</p>
+                  )}
+
+                  {uploadedImages.length > 0 && (
+                    <div className='mt-4'>
+                      <h3 className='text-sm font-medium mb-2'> Uploaded Images ({uploadedImages.length})</h3>
+                      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+                        {uploadedImages.map((image, index) => (
+                          <div key={index} className='relative group'>
+                            <Image
+                              src={image}
+                              alt={`Car image ${index + 1}`}
+                              height={50}
+                              width={50}
+                              priority
+                              className='h-40 w-full object-cover rounded-md'
+                            />
+
+                            <Button
+                              type='button'
+                              size='icon'
+                              variant='destructive'
+                              className='absolute top-1 right-1 h-6 w-6 cursor-pointer opacity-0
+                               group-hover:opacity-100 transition-opacity duration-200'
+                              onClick={() => removeImage(index)}
+                            >
+                              <X className='h-3 w-3' />
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
+                <Button 
+                type='submit' className='w-full md:w-auto'
+                disabled={true}
+                >
+                  {true ? (
+                    <> <Loader2 className='mr-2 h-4 w-4 animate-spin' />Adding Car... </>
+                  ) : ("Add Car")}
+                </Button>
               </form>
             </CardContent>
           </Card>

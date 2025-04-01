@@ -88,7 +88,7 @@ const HomeSearch = () => {
 
           <div className='absolute right-[100px]'>
             <Camera
-              size={35}
+              size={35} 
               onClick={() => setIsImageSearchActive(!isImageSearchActive)}
               className='cursor-pointer rounded-xl p-1.5'
               style={{
@@ -128,7 +128,7 @@ const HomeSearch = () => {
                   </Button>
                 </div>
               ) : (
-                <div {...getRootProps()} className='cursor-pointer'>
+               <div {...getRootProps()} className='cursor-pointer'>
                   <input {...getInputProps()} />
                   <div className='flex flex-col items-center'>
                     <Upload className='h-12 w-12 text-gray-400 mb-2' />

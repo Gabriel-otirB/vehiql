@@ -9,6 +9,7 @@ const Header = async ({ isAdminPage = false }) => {
   const user = await checkUser();
 
   const isAdmin = user.role === "ADMIN";
+  // const isAdmin = true;
 
   return (
     <header className='fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b'>
@@ -29,7 +30,7 @@ const Header = async ({ isAdminPage = false }) => {
         <div className='flex items-center space-x-4'>
           {isAdminPage ? (
             <Link href='/admin'>
-              <Button variant='outline' className='flex items-center gap-2'>
+              <Button variant='outline' className='flex items-center gap-2 cursor-pointer'>
                 <ArrowLeft size={18} />
                 <span className='hidden md:inline'>Back to App</span>
               </Button>
@@ -38,15 +39,15 @@ const Header = async ({ isAdminPage = false }) => {
             <SignedIn>
 
               <Link href='/admin'>
-                <Button>
+                <Button className='cursor-pointer'>
                   <Heart size={18} />
                   <span className='hidden md:inline'>Saved Cars</span>
                 </Button>
               </Link>
 
               {!isAdmin ? (
-                <Link href='/reservations-cars'>
-                  <Button variant={'outline'}>
+                <Link href='/reservations-cars' className='cursor-pointer'>
+                  <Button variant={'outline'} className='cursor-pointer'>
                     <CarFront size={18} />
                     <span className='hidden md:inline'>My Reservations</span>
                   </Button>
@@ -54,7 +55,7 @@ const Header = async ({ isAdminPage = false }) => {
               )
                 : (
                   <Link href='/admin'>
-                    <Button variant={'outline'}>
+                    <Button variant={'outline'} className='cursor-pointer'>
                       <Layout size={18} />
                       <span className='hidden md:inline'>Admin Portal</span>
                     </Button>
@@ -64,7 +65,7 @@ const Header = async ({ isAdminPage = false }) => {
           )}
 
           <SignedOut>
-            <SignInButton forceRedirectUrl='/'>
+            <SignInButton forceRedirectUrl='/' className='cursor-pointer'>
               <Button variant='outline'>Login</Button>
             </SignInButton>
           </SignedOut>
