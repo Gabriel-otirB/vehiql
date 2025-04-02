@@ -24,7 +24,7 @@ import {
 
 import { Checkbox } from "@/components/ui/checkbox"
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -33,6 +33,8 @@ import { toast } from 'sonner';
 import { Loader, Loader2, Upload, X } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { addCar } from '@/actions/cars';
+import useFetch from '@/hooks/use-fetch';
 
 // Predefined options
 const fuelTypes = ["Petrol", "Diesel", "Electric", "Hybrid", "Plug-in Hybrid"];
@@ -101,13 +103,37 @@ const AddCarForm = () => {
     },
   });
 
+  const {
+    data: addCarResult,
+    loading: addCarLoading,
+    fn: addCarFn,
+  } = useFetch(addCar);
+
+  useEffect(() => {
+    if (addCarResult?.success) {
+      toast.success("Car added successfully");
+      router.push("/admin/cars");
+    }
+  }, [addCarResult, addCarLoading])
+
   const onSubmit = async (data) => {
     if (uploadedImages.length === 0) {
       setImageError("Please upload at least one image");
       return;
     }
 
-    addCar
+    const carData = {
+      ...data,
+      year: parseInt(data.year),
+      price: parseFloat(data.price),
+      mileage: parseInt(data.mileage),
+      seats: data.seats ? parseInt(data.seats) : null,
+    };
+
+    await addCarFn({
+      carData,
+      images: uploadedImages
+    });
   }
 
   const onMultiImagesDrop = (acceptedFiles) => {
@@ -504,11 +530,12 @@ const AddCarForm = () => {
                   )}
                 </div>
 
-                <Button 
-                type='submit' className='w-full md:w-auto'
-                disabled={true}
+                <Button
+                  type='submit' className='w-full md:w-auto'
+                  disabled={addCarLoading}
+                  className='cursor-pointer'
                 >
-                  {true ? (
+                  {addCarLoading ? (
                     <> <Loader2 className='mr-2 h-4 w-4 animate-spin' />Adding Car... </>
                   ) : ("Add Car")}
                 </Button>
