@@ -184,11 +184,11 @@ const CarFilters = ({ filters }) => {
                 <Button
                   variant='outline'
                   onClick={clearFilters}
-                  className='flex-1'
+                  className='flex-1 cursor-pointer'
                 >
                   Reset
                 </Button>
-                <Button onClick={applyFilters} className='flex-1'>
+                <Button onClick={applyFilters} className='flex-1 cursor-pointer'>
                   Show Results
                 </Button>
               </SheetFooter>
@@ -255,7 +255,7 @@ const CarFilters = ({ filters }) => {
           </div>
 
           <div className='px-4 py-4 border-t'>
-            <Button onClick={applyFilters} className='w-full'>
+            <Button onClick={applyFilters} className='w-full cursor-pointer'>
               Apply Filters
             </Button>
           </div>

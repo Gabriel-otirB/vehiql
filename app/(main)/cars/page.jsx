@@ -21,7 +21,7 @@ const CarsPage = async () => {
           <CarFilters filters={filtersData.data} />
           </div>
 
-        <div>
+        <div className="flex-1">
           {/* Listing */}
           <CarListing />
         </div>

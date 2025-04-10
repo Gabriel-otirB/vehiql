@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Badge } from '@/components/ui/badge';
 import { Slider } from '@/components/ui/slider';
@@ -45,7 +45,7 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
   return (
     <div className='space-y-6'>
       {/* Price Range */}
-      <div className='space-y-4'>
+      <div className='space-y-4 px-3'>
         <h3 className='font-medium'>Price Range</h3>
         <div className='px-2'>
           <Slider
@@ -64,7 +64,7 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
 
       {
         filterSections.map((section) => (
-          <div key={section.id} className='space-y-3'>
+          <div key={section.id} className='space-y-3 px-3'>
             <h4 className="text-sm font-medium flex justify-between">
               <span>{section.title}</span>
               {section.currentValue && (
