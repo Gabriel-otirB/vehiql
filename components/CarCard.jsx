@@ -9,7 +9,7 @@ import { Badge } from './ui/badge';
 import { useRouter } from 'next/navigation';
 
 
-const CardCard = ({ car }) => {
+const CarCard = ({ car }) => {
 
   const [isSaved, setIsSaved] = useState(car.wishlisted);
   const router = useRouter();
@@ -85,4 +85,4 @@ const CardCard = ({ car }) => {
   )
 }
 
-export default CardCard;
+export default CarCard;

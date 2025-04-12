@@ -1,4 +1,4 @@
-import CardCard from '@/components/CardCard';
+import CarCard from '@/components/CarCard';
 import HomeSearch from '@/components/HomeSearch';
 import { Button } from '@/components/ui/button';
 import { bodyTypes, carMakes, faqItems, featuredCars } from '@/lib/data';
@@ -44,7 +44,7 @@ export default async function Home() {
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
             {featuredCars.map((car) => (
-              <CardCard key={car.id} car={car} />
+              <CarCard key={car.id} car={car} />
             ))}
           </div>
         </div>
