@@ -45,7 +45,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import useFetch from "@/hooks/use-fetch";
 import { getCars, deleteCar, updateCarStatus } from "@/actions/cars";
 import Image from "next/image";
-import { formatCurrency } from '@/lib/helper';
+import { formatCurrency } from "@/lib/helper";
 
 export const CarsList = () => {
   const router = useRouter();
@@ -332,9 +332,9 @@ export const CarsList = () => {
                   ? "No cars match your search criteria"
                   : "Your inventory is empty. Add cars to get started."}
               </p>
-              <Button 
-              className="cursor-pointer"
-              onClick={() => router.push("/admin/cars/create")}>
+              <Button
+                className="cursor-pointer"
+                onClick={() => router.push("/admin/cars/create")}>
                 Add Your First Car
               </Button>
             </div>

@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/prisma";
-import { serializeCarData } from '@/lib/helper';
+import { serializeCarData } from "@/lib/helper";
 
 /**
  * Books a test drive for a car
@@ -81,7 +81,7 @@ export async function bookTestDrive({
 }
 
 /**
- * Get user's test drive bookings - reservations page
+ * Get user"s test drive bookings - reservations page
  */
 export async function getUserTestDrives() {
   try {
@@ -105,7 +105,7 @@ export async function getUserTestDrives() {
       };
     }
 
-    // Get user's test drive bookings
+    // Get user"s test drive bookings
     const bookings = await db.testDriveBooking.findMany({
       where: { userId: user.id },
       include: {

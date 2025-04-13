@@ -1,21 +1,21 @@
 "use client"
 
-import { useEffect, useState } from 'react';
-import { Input } from './ui/input';
-import { Camera, Upload } from 'lucide-react';
-import { Button } from './ui/button';
-import { useDropzone } from 'react-dropzone';
-import { toast } from 'sonner';
-import { useRouter } from 'next/navigation';
-import useFetch from '@/hooks/use-fetch';
-import { processImageSearch } from '@/actions/home';
+import { useEffect, useState } from "react";
+import { Input } from "./ui/input";
+import { Camera, Upload } from "lucide-react";
+import { Button } from "./ui/button";
+import { useDropzone } from "react-dropzone";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import useFetch from "@/hooks/use-fetch";
+import { processImageSearch } from "@/actions/home";
 
 
 const HomeSearch = () => {
   const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [isImageSearchActive, setIsImageSearchActive] = useState(false);
-  const [imagePreview, setImagePreview] = useState('');
+  const [imagePreview, setImagePreview] = useState("");
   const [searchImage, setSearchImage] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
 
@@ -113,18 +113,18 @@ const HomeSearch = () => {
       <form onSubmit={handleTextSubmit}>
         <div className="relative flex items-center">
           <Input
-            type='text'
-            placeholder='Enter make, model, or use our AI Image Search...'
+            type="text"
+            placeholder="Enter make, model, or use our AI Image Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className='pl-10 pr-12 py-6 w-full rounded-full border-gray-300 bg-white/95 backdrop-blur-sm'
+            className="pl-10 pr-12 py-6 w-full rounded-full border-gray-300 bg-white/95 backdrop-blur-sm"
           />
 
-          <div className='absolute right-[100px]'>
+          <div className="absolute right-[100px]">
             <Camera
-              size={35} 
+              size={35}
               onClick={() => setIsImageSearchActive(!isImageSearchActive)}
-              className='cursor-pointer rounded-xl p-1.5'
+              className="cursor-pointer rounded-xl p-1.5"
               style={{
                 background: isImageSearchActive ? "black" : "",
                 color: isImageSearchActive ? "white" : "",
@@ -139,22 +139,22 @@ const HomeSearch = () => {
       </form>
 
       {isImageSearchActive && (
-        <div className='mt-4'>
+        <div className="mt-4">
           <form onSubmit={handleImageSearch}>
-            <div className='border-2 border-dashed border-gray-300 rounded-3xl p-6 text-center'>
+            <div className="border-2 border-dashed border-gray-300 rounded-3xl p-6 text-center">
               {imagePreview ? (
-                <div className='flex flex-col items-center'>
+                <div className="flex flex-col items-center">
                   <img
                     src={imagePreview}
-                    alt='Car preview'
-                    className='h-40 object-contain mb-4'
+                    alt="Car preview"
+                    className="h-40 object-contain mb-4"
                   />
                   <Button
-                    className='cursor-pointer'
-                    variant='outline'
+                    className="cursor-pointer"
+                    variant="outline"
                     onClick={() => {
                       setSearchImage(null);
-                      setImagePreview('');
+                      setImagePreview("");
                       toast.info("Image removed");
                     }}
                   >
@@ -162,19 +162,19 @@ const HomeSearch = () => {
                   </Button>
                 </div>
               ) : (
-               <div {...getRootProps()} className='cursor-pointer'>
+                <div {...getRootProps()} className="cursor-pointer">
                   <input {...getInputProps()} />
-                  <div className='flex flex-col items-center'>
-                    <Upload className='h-12 w-12 text-gray-400 mb-2' />
-                    <p className='text-gray-500 mb-2'>
+                  <div className="flex flex-col items-center">
+                    <Upload className="h-12 w-12 text-gray-400 mb-2" />
+                    <p className="text-gray-500 mb-2">
                       {isDragActive && !isDragReject
                         ? "Leave the file here to upload"
                         : "Drag & drop a car image or click to select"}
                     </p>
                     {isDragReject && (
-                      <p className='text-red-500 mb-2'>Invalid image type</p>
+                      <p className="text-red-500 mb-2">Invalid image type</p>
                     )}
-                    <p className='text-gray-400 text-sm'>
+                    <p className="text-gray-400 text-sm">
                       Supports: JPG, PNG (max 5MB)
                     </p>
                   </div>
@@ -184,13 +184,13 @@ const HomeSearch = () => {
 
             {imagePreview && (
               <Button
-                type='submit'
-                className='w-full cursor-pointer mt-2'
+                type="submit"
+                className="w-full cursor-pointer mt-2"
                 disabled={isUploading || isProcessing}
               >
-                {isUploading ? "Uploading..." 
-                : isProcessing ? "Analyzing image..." 
-                : "Search with this Image"}
+                {isUploading ? "Uploading..."
+                  : isProcessing ? "Analyzing image..."
+                    : "Search with this Image"}
               </Button>
             )}
 

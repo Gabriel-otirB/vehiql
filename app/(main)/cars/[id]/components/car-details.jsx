@@ -21,7 +21,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { toggleSavedCar } from "@/actions/car-listing";
 import useFetch from "@/hooks/use-fetch";
-import { formatCurrency } from '@/lib/helper';
+import { formatCurrency } from "@/lib/helper";
 import { format } from "date-fns";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -137,8 +137,8 @@ export function CarDetails({ car, testDriveInfo }) {
                 <div
                   key={index}
                   className={`relative cursor-pointer rounded-md h-20 w-24 flex-shrink-0 transition ${index === currentImageIndex
-                      ? "border-2 border-blue-600"
-                      : "opacity-70 hover:opacity-100"
+                    ? "border-2 border-blue-600"
+                    : "opacity-70 hover:opacity-100"
                     }`}
                   onClick={() => setCurrentImageIndex(index)}
                 >

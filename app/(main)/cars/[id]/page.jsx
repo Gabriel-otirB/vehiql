@@ -1,6 +1,6 @@
-import { getCarById } from '@/actions/car-listing';
-import React from 'react'
-import { CarDetails } from './components/car-details';
+import { getCarById } from "@/actions/car-listing";
+import React from "react"
+import { CarDetails } from "./components/car-details";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;

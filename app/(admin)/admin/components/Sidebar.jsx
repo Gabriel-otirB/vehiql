@@ -1,9 +1,9 @@
 "use client";
 
-import { cn } from '@/lib/utils';
-import { Calendar, Car, Cog, LayoutDashboard } from 'lucide-react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { cn } from "@/lib/utils";
+import { Calendar, Car, Cog, LayoutDashboard } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const routes = [
   {
@@ -34,7 +34,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className='hidden md:flex h-full flex-col overflow-y-auto bg-white shadow-sm border-r'>
+      <div className="hidden md:flex h-full flex-col overflow-y-auto bg-white shadow-sm border-r">
         {routes.map((route) => (
           <Link
             key={route.href}
@@ -47,13 +47,13 @@ const Sidebar = () => {
                 : ""
             )}
           >
-            <route.icon className='h-5 w-5' />
+            <route.icon className="h-5 w-5" />
             {route.label}
           </Link>
         ))}
       </div>
 
-      <div className='md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t flex justify-around items-center h-16'>
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t flex justify-around items-center h-16">
         {routes.map((route) => (
           <Link
             key={route.href}
@@ -63,7 +63,7 @@ const Sidebar = () => {
               pathname === route.href ? "text-blue-700" : ""
             )}
           >
-            <route.icon className='h-5 w-5' />
+            <route.icon className="h-5 w-5" />
             {route.label}
           </Link>
         ))}

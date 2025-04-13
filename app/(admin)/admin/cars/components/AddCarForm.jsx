@@ -1,8 +1,8 @@
 "use client"
 
-import { z } from 'zod';
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -24,18 +24,18 @@ import {
 
 import { Checkbox } from "@/components/ui/checkbox"
 
-import { useEffect, useState } from 'react';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useDropzone } from 'react-dropzone';
-import { toast } from 'sonner';
-import { Camera, Loader, Loader2, Upload, X } from 'lucide-react';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { addCar, processCarImageWithAI } from '@/actions/cars';
-import useFetch from '@/hooks/use-fetch';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useDropzone } from "react-dropzone";
+import { toast } from "sonner";
+import { Camera, Loader, Loader2, Upload, X } from "lucide-react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { addCar, processCarImageWithAI } from "@/actions/cars";
+import useFetch from "@/hooks/use-fetch";
+import { useRouter } from "next/navigation";
 
 // Predefined options
 const fuelTypes = ["Petrol", "Diesel", "Electric", "Hybrid", "Plug-in Hybrid"];
@@ -187,9 +187,8 @@ const AddCarForm = () => {
       reader.readAsDataURL(uploadedAiImage);
 
       toast.success("Successfully extracted car details", {
-        description: `Detected ${carDetails.year} ${carDetails.make} ${
-          carDetails.model
-        } with ${Math.round(carDetails.confidence * 100)}% confidence`,
+        description: `Detected ${carDetails.year} ${carDetails.make} ${carDetails.model
+          } with ${Math.round(carDetails.confidence * 100)}% confidence`,
       });
 
       // Switch to manual tab for the user to review and fill in missing details
@@ -569,7 +568,7 @@ const AddCarForm = () => {
                     className={imageError ? "text-red-500" : ""}
                   >
                     Images{" "}
-                    {imageError && <span className='text-red-500'>*</span>}
+                    {imageError && <span className="text-red-500">*</span>}
                   </Label>
 
                   <div {...getMultiImageRootProps()}
@@ -577,45 +576,45 @@ const AddCarForm = () => {
                       }`}
                   >
                     <input {...getMultiImageInputProps()} />
-                    <div className='flex flex-col items-center justify-center'>
-                      <Upload className='h-12 w-12 text-gray-400 mb-3' />
-                      <p className='text-gray-600 text-sm'>
+                    <div className="flex flex-col items-center justify-center">
+                      <Upload className="h-12 w-12 text-gray-400 mb-3" />
+                      <p className="text-gray-600 text-sm">
                         Drag & drop or click to upload multiple images
                       </p>
 
-                      <p className='text-gray-500 text-xs mt-1'>
+                      <p className="text-gray-500 text-xs mt-1">
                         (JPG, PNG, WebP, max 5MB each)
                       </p>
                     </div>
                   </div>
                   {imageError && (
-                    <p className='text-xs text-red-500 mt-1'>{imageError}</p>
+                    <p className="text-xs text-red-500 mt-1">{imageError}</p>
                   )}
 
                   {uploadedImages.length > 0 && (
-                    <div className='mt-4'>
-                      <h3 className='text-sm font-medium mb-2'> Uploaded Images ({uploadedImages.length})</h3>
-                      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+                    <div className="mt-4">
+                      <h3 className="text-sm font-medium mb-2"> Uploaded Images ({uploadedImages.length})</h3>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                         {uploadedImages.map((image, index) => (
-                          <div key={index} className='relative group'>
+                          <div key={index} className="relative group">
                             <Image
                               src={image}
                               alt={`Car image ${index + 1}`}
                               height={100}
                               width={100}
                               priority
-                              className='h-50 w-full object-cover rounded-md'
+                              className="h-50 w-full object-cover rounded-md"
                             />
 
                             <Button
-                              type='button'
-                              size='icon'
-                              variant='destructive'
-                              className='absolute top-1 right-1 h-6 w-6 cursor-pointer opacity-0
-                               group-hover:opacity-100 transition-opacity duration-200'
+                              type="button"
+                              size="icon"
+                              variant="destructive"
+                              className="absolute top-1 right-1 h-6 w-6 cursor-pointer opacity-0
+                               group-hover:opacity-100 transition-opacity duration-200"
                               onClick={() => removeImage(index)}
                             >
-                              <X className='h-3 w-3' />
+                              <X className="h-3 w-3" />
                             </Button>
                           </div>
                         ))}
@@ -625,12 +624,12 @@ const AddCarForm = () => {
                 </div>
 
                 <Button
-                  type='submit' className='w-full md:w-auto'
+                  type="submit" className="w-full md:w-auto"
                   disabled={addCarLoading}
-                  className='cursor-pointer'
+                  className="cursor-pointer"
                 >
                   {addCarLoading ? (
-                    <> <Loader2 className='mr-2 h-4 w-4 animate-spin' />Adding Car... </>
+                    <> <Loader2 className="mr-2 h-4 w-4 animate-spin" />Adding Car... </>
                   ) : ("Add Car")}
                 </Button>
               </form>
@@ -644,18 +643,18 @@ const AddCarForm = () => {
               <CardDescription>Upload an image of a car and let Gemni AI extract its details.</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className='space-y-6'>
-                <div className='border-2 border-dashed rounded-lg p-6 text-center'>
+              <div className="space-y-6">
+                <div className="border-2 border-dashed rounded-lg p-6 text-center">
                   {imagePreview ? (
-                    <div className='flex flex-col items-center'>
+                    <div className="flex flex-col items-center">
                       <img
                         src={imagePreview}
                         alt="Car preview"
                         className="max-h-56 max-w-full object-contain mb-4"
                       />
-                      <div className='flex gap-2'>
+                      <div className="flex gap-2">
                         <Button
-                          className='cursor-pointer'
+                          className="cursor-pointer"
                           variant="outline"
                           size="sm"
                           onClick={() => {
@@ -666,18 +665,18 @@ const AddCarForm = () => {
                           Remove
                         </Button>
                         <Button
-                          className='cursor-pointer'
+                          className="cursor-pointer"
                           size="sm"
                           onClick={processWithAI}
                           disabled={processImageLoading}
                         >
                           {processImageLoading ?
                             <>
-                              <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                               Processing...
                             </> :
                             <>
-                              <Camera className='mr-2 h-4 w-4' />
+                              <Camera className="mr-2 h-4 w-4" />
                               Extract Details
                             </>
                           }
@@ -687,15 +686,15 @@ const AddCarForm = () => {
                   )
                     : (
                       <div {...getAiRootProps()}
-                        className='cursor-pointer hover:bg-gray-50 transition'
+                        className="cursor-pointer hover:bg-gray-50 transition"
                       >
                         <input {...getAiInputProps()} />
-                        <div className='flex flex-col items-center justify-center'>
-                          <Camera className='h-12 w-12 text-gray-400 mb-2' />
-                          <p className='text-gray-600 text-sm'>
+                        <div className="flex flex-col items-center justify-center">
+                          <Camera className="h-12 w-12 text-gray-400 mb-2" />
+                          <p className="text-gray-600 text-sm">
                             Drag & drop a car image or click to select
                           </p>
-                          <p className='text-gray-500 text-xs mt-1'>
+                          <p className="text-gray-500 text-xs mt-1">
                             Supports: JPG, PNG, WebP (max 5MB)
                           </p>
                         </div>

@@ -1,9 +1,9 @@
 "use server";
 
-import { serializeCarData } from '@/lib/helper';
-import { db } from '@/lib/prisma';
-import { auth } from '@clerk/nextjs/server';
-import { revalidatePath } from 'next/cache';
+import { serializeCarData } from "@/lib/helper";
+import { db } from "@/lib/prisma";
+import { auth } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
 export async function getCarFilters() {
 
@@ -181,7 +181,7 @@ export async function getCars({
   }
 }
 
-//  Toggle car in user's wishlist
+//  Toggle car in user"s wishlist
 export async function toggleSavedCar(carId) {
   try {
     const { userId } = await auth();
@@ -253,7 +253,7 @@ export async function toggleSavedCar(carId) {
   }
 }
 
-// Get user's saved cars
+// Get user"s saved cars
 export async function getSavedCars() {
   try {
     const { userId } = await auth();
@@ -328,6 +328,7 @@ export async function getCarById(carId) {
 
     // Check if car is wishlisted by user
     let isWishlisted = false;
+
     if (dbUser) {
       const savedCar = await db.userSavedCar.findUnique({
         where: {
@@ -341,17 +342,22 @@ export async function getCarById(carId) {
       isWishlisted = !!savedCar;
     }
 
+
     // Check if user has already booked a test drive for this car
-    const existingTestDrive = await db.testDriveBooking.findFirst({
-      where: {
-        carId,
-        userId: dbUser.id,
-        status: { in: ["PENDING", "CONFIRMED", "COMPLETED"] },
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+    let existingTestDrive = null;
+
+    if (dbUser) {
+      existingTestDrive = await db.testDriveBooking.findFirst({
+        where: {
+          carId,
+          userId: dbUser.id,
+          status: { in: ["PENDING", "CONFIRMED", "COMPLETED"] },
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+    }
 
     let userTestDrive = null;
 

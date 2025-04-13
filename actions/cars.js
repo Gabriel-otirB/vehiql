@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { db } from "@/lib/prisma";
 import { createClient } from "@/lib/supabase";
 import { auth } from "@clerk/nextjs/server";
-import { serializeCarData } from '@/lib/helper';
+import { serializeCarData } from "@/lib/helper";
 // import { serializeCarData } from "@/lib/helpers";
 
 // Function to convert File to base64
@@ -139,7 +139,7 @@ export async function addCar({ carData, images }) {
 
     if (!user) throw new Error("User not found");
 
-    // Create a unique folder name for this car's images
+    // Create a unique folder name for this car"s images
     const carId = uuidv4();
     const folderPath = `cars/${carId}`;
 

@@ -1,15 +1,15 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from '@/components/Header';
+import Header from "@/components/header";
 
-import { ClerkProvider } from '@clerk/nextjs';
-import { Toaster } from 'sonner';
+import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Vehiql',
-  description: 'Find your dream Car',
+  title: "Vehiql",
+  description: "Find your dream Car",
 }
 
 export default function RootLayout({ children }) {
@@ -20,13 +20,13 @@ export default function RootLayout({ children }) {
           className={`${inter.className}`}
         >
           <Header />
-          <main className='min-h-screen'>
+          <main className="min-h-screen">
             {children}
           </main>
           <Toaster richColors />
 
-          <footer className='bg-blue-50 py-12'>
-            <div className='container mx-auto px-4 text-center text-gray-600'>
+          <footer className="bg-blue-50 py-12">
+            <div className="container mx-auto px-4 text-center text-gray-600">
               <div>&copy; {new Date().getFullYear()}. All rights reserved.</div>
             </div>
           </footer>

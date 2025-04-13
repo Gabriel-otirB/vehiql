@@ -1,13 +1,13 @@
 "use client"
 
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Filter, Sliders, X } from 'lucide-react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
-import CarFilterControls from './filter-controls';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Filter, Sliders, X } from "lucide-react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import React, { useEffect, useState } from "react"
+import CarFilterControls from "./filter-controls";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const CarFilters = ({ filters }) => {
   const router = useRouter();
@@ -148,30 +148,30 @@ const CarFilters = ({ filters }) => {
   }
 
   return (
-    <div className='flex lg:flex-col justify-between gap-4'>
+    <div className="flex lg:flex-col justify-between gap-4">
       {/* Mobile filters */}
-      <div className='lg:hidden mb-4'>
-        <div className='flex items-center'>
+      <div className="lg:hidden mb-4">
+        <div className="flex items-center">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
-              <Button variant='outline' className='cursor-pointer flex items-center gap-2'>
-                <Filter className='h-4 w-4' /> Filters
+              <Button variant="outline" className="cursor-pointer flex items-center gap-2">
+                <Filter className="h-4 w-4" /> Filters
                 {activeFilterCount > 0 && (
-                  <Badge className='ml-1 h-5 w-5 rounded-full p-0 flex items-center justify-center'>
+                  <Badge className="ml-1 h-5 w-5 rounded-full p-0 flex items-center justify-center">
                     {activeFilterCount}
                   </Badge>
                 )}
               </Button>
             </SheetTrigger>
             <SheetContent
-              side='left'
-              className='w-full sm:max-w-md overflow-y-auto'
+              side="left"
+              className="w-full sm:max-w-md overflow-y-auto"
             >
               <SheetHeader>
                 <SheetTitle>Filter</SheetTitle>
               </SheetHeader>
 
-              <div className='py-6'>
+              <div className="py-6">
                 <CarFilterControls
                   filters={filters}
                   currentFilters={currentFilters}
@@ -180,15 +180,15 @@ const CarFilters = ({ filters }) => {
                 />
               </div>
 
-              <SheetFooter className='sm:justify-between flex-row pt-2 border-t space-x-4 mt-auto'>
+              <SheetFooter className="sm:justify-between flex-row pt-2 border-t space-x-4 mt-auto">
                 <Button
-                  variant='outline'
+                  variant="outline"
                   onClick={clearFilters}
-                  className='flex-1 cursor-pointer'
+                  className="flex-1 cursor-pointer"
                 >
                   Reset
                 </Button>
-                <Button onClick={applyFilters} className='flex-1 cursor-pointer'>
+                <Button onClick={applyFilters} className="flex-1 cursor-pointer">
                   Show Results
                 </Button>
               </SheetFooter>
@@ -224,11 +224,11 @@ const CarFilters = ({ filters }) => {
       </Select>
 
       {/* Desktop Filters */}
-      <div className='hidden lg:block sticky top-24'>
-        <div className='border rounded-lg overflow-hidden bg-white'>
-          <div className='p-4 border-b bg-gray-50 flex justify-between items-center'>
-            <h3 className='font-medium flex items-center'>
-              <Sliders className='mr-2 h-4 w-4' />
+      <div className="hidden lg:block sticky top-24">
+        <div className="border rounded-lg overflow-hidden bg-white">
+          <div className="p-4 border-b bg-gray-50 flex justify-between items-center">
+            <h3 className="font-medium flex items-center">
+              <Sliders className="mr-2 h-4 w-4" />
               Filters
             </h3>
 
@@ -245,7 +245,7 @@ const CarFilters = ({ filters }) => {
             )}
           </div>
 
-          <div className='p-4'>
+          <div className="p-4">
             <CarFilterControls
               filters={filters}
               currentFilters={currentFilters}
@@ -254,8 +254,8 @@ const CarFilters = ({ filters }) => {
             />
           </div>
 
-          <div className='px-4 py-4 border-t'>
-            <Button onClick={applyFilters} className='w-full cursor-pointer'>
+          <div className="px-4 py-4 border-t">
+            <Button onClick={applyFilters} className="w-full cursor-pointer">
               Apply Filters
             </Button>
           </div>

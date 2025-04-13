@@ -1,9 +1,9 @@
 "use client";
 
-import { Badge } from '@/components/ui/badge';
-import { Slider } from '@/components/ui/slider';
-import { Check, X } from 'lucide-react';
-import React from 'react'
+import { Badge } from "@/components/ui/badge";
+import { Slider } from "@/components/ui/slider";
+import { Check, X } from "lucide-react";
+import React from "react"
 
 const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFilter, }) => {
   const { make, bodyType, fuelType, transmission, priceRange } = currentFilters;
@@ -43,11 +43,11 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
   ];
 
   return (
-    <div className='space-y-6'>
+    <div className="space-y-6">
       {/* Price Range */}
-      <div className='space-y-4 px-3'>
-        <h3 className='font-medium'>Price Range</h3>
-        <div className='px-2'>
+      <div className="space-y-4 px-3">
+        <h3 className="font-medium">Price Range</h3>
+        <div className="px-2">
           <Slider
             min={filters.priceRange.min}
             max={filters.priceRange.max}
@@ -64,7 +64,7 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
 
       {
         filterSections.map((section) => (
-          <div key={section.id} className='space-y-3 px-3'>
+          <div key={section.id} className="space-y-3 px-3">
             <h4 className="text-sm font-medium flex justify-between">
               <span>{section.title}</span>
               {section.currentValue && (
@@ -78,7 +78,7 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
               )}
             </h4>
 
-            <div className='flex flex-wrap gap-2 max-h-60 overflow-y-auto pr-1'>
+            <div className="flex flex-wrap gap-2 max-h-60 overflow-y-auto pr-1">
               {section.options.map(option => (
                 <Badge
                   key={option.value}
@@ -95,7 +95,7 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
                 >
                   {option.label}
                   {section.currentValue === option.value && (
-                    <Check className='ml-1 h-3 w-3 inline' />
+                    <Check className="ml-1 h-3 w-3 inline" />
                   )}
                 </Badge>
               ))}

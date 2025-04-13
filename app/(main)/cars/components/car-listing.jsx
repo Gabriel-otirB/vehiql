@@ -1,17 +1,17 @@
 "use client";
 
-import { getCars } from '@/actions/car-listing';
-// import { getCars } from '@/actions/car-listing';
-import useFetch from '@/hooks/use-fetch';
-import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
-import CarListingsLoading from './car-listings-loading';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Info } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { CarCard } from './car-card';
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import { getCars } from "@/actions/car-listing";
+// import { getCars } from "@/actions/car-listing";
+import useFetch from "@/hooks/use-fetch";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react"
+import CarListingsLoading from "./car-listings-loading";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Info } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { CarCard } from "./car-card";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 
 const CarListing = () => {
   const searchParams = useSearchParams();
@@ -114,7 +114,7 @@ const CarListing = () => {
         </div>
         <h3 className="text-lg font-medium mb-2">No cars found</h3>
         <p className="text-gray-500 mb-6 max-w-md">
-          We couldn't find any cars matching your search criteria. Try adjusting
+          We couldn"t find any cars matching your search criteria. Try adjusting
           your filters or search term.
         </p>
         <Button variant="outline" asChild>
@@ -142,7 +142,7 @@ const CarListing = () => {
     visiblePageNumbers.push(i);
   }
 
-  // Always show last page if there's more than 1 page
+  // Always show last page if there"s more than 1 page
   if (pagination.pages > 1) {
     visiblePageNumbers.push(pagination.pages);
   }
@@ -184,17 +184,17 @@ const CarListing = () => {
 
   return (
     <div>
-      <div className='flex justify-between items-center mb-6'>
-        <p className='text-gray-600'>
+      <div className="flex justify-between items-center mb-6">
+        <p className="text-gray-600">
           Showing{" "}
-          <span className='font-medium'>
+          <span className="font-medium">
             {(page - 1) * limit + 1}-{Math.min(page * limit, pagination.total)}
           </span>{" "}
-          of <span className='font-medium'>{pagination.total}</span> cars
+          of <span className="font-medium">{pagination.total}</span> cars
         </p>
       </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cars.map((car) => (
           <CarCard key={car.id} car={car} />
         ))}
