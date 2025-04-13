@@ -1,12 +1,12 @@
 "use client"
 
 import Image from 'next/image';
-import { Card, CardContent } from './ui/card';
 import { CarIcon, Heart } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
 import { Badge } from './ui/badge';
 import { useRouter } from 'next/navigation';
+import { Card, CardContent } from './ui/card';
 
 
 const CarCard = ({ car }) => {
@@ -77,7 +77,7 @@ const CarCard = ({ car }) => {
         <div className='flex justify-center'>
           <Button 
           className='flex-1 cursor-pointer hover:scale-105 transition duration-300'
-          onClick={() => router.push(`/cars/${card.id}`)}
+          onClick={() => router.push(`/cars/${car.id}`)}
           >View Car</Button>
         </div>
       </CardContent>
