@@ -137,7 +137,7 @@ export function TestDriveCard({
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full my-2 sm:mb-0 cursor-pointer"
+                className="w-full my-2 sm:mb-0"
                 asChild
               >
                 <Link
@@ -153,7 +153,7 @@ export function TestDriveCard({
                 <Button
                   variant="destructive"
                   size="sm"
-                  className="w-full my-2 cursor-pointer"
+                  className="w-full"
                   onClick={() => setCancelDialogOpen(true)}
                   disabled={isCancelling}
                 >
