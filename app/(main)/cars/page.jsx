@@ -1,7 +1,7 @@
 import { getCarFilters } from "@/actions/car-listing";
 import React from "react"
-import CarFilters from "./components/car-filters";
-import CarListing from "./components/car-listing";
+import CarFilters from "./_components/car-filters";
+import CarListing from "./_components/car-listing";
 
 export const metadata = {
   title: "Cars | Vehiql",

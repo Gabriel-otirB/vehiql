@@ -1,4 +1,4 @@
-import { SettingsForm } from "./components/settings.form";
+import { SettingsForm } from "./_components/settings.form";
 
 export const metadata = {
   title: "Settings | Vehiql Admin",

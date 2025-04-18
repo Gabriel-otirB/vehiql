@@ -1,4 +1,4 @@
-import AddCarForm from "../components/AddCarForm";
+import AddCarForm from "../_components/AddCarForm";
 
 export const metadata = {
   title: "Add New Car | Vehiql Admin",

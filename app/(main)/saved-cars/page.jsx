@@ -2,7 +2,7 @@ import { getSavedCars } from "@/actions/car-listing";
 
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { SavedCarsList } from "./components/saved-cars-list";
+import { SavedCarsList } from "./_components/saved-cars-list";
 
 export const metadata = {
   title: "Saved Cars | Vehiql",

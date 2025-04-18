@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
-import { CarCard } from "../../cars/components/car-card";
+import { CarCard } from "../../cars/_components/car-card";
 
 export function SavedCarsList({ initialData }) {
   // No saved cars

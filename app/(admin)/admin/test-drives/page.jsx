@@ -1,4 +1,4 @@
-import { TestDrivesList } from "./components/test-drive-list";
+import { TestDrivesList } from "./_components/test-drive-list";
 
 export const metadata = {
   title: "Test Drives | Vehiql Admin",

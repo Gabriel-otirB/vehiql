@@ -1,7 +1,7 @@
 import { getUserTestDrives } from "@/actions/test-drive";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { ReservationsList } from "./components/reservations-list";
+import { ReservationsList } from "./_components/reservations-list";
 
 export const metadata = {
   title: "My Reservations | Vehiql",

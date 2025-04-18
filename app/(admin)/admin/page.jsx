@@ -1,5 +1,5 @@
 import { getDashboardData } from "@/actions/admin";
-import { Dashboard } from "./components/dashboard";
+import { Dashboard } from "./_components/dashboard";
 
 export const metadata = {
   title: "Dashboard | Vehiql Admin",

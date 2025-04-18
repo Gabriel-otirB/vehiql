@@ -1,6 +1,6 @@
 import { getCarById } from "@/actions/car-listing";
 import { notFound } from "next/navigation";
-import { TestDriveForm } from "./components/test-drive-form";
+import { TestDriveForm } from "./_components/test-drive-form";
 
 export async function generateMetadata() {
   return {
