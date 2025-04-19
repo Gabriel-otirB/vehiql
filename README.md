@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vehiql
 
-## Getting Started
+**Vehiql** é uma plataforma web full stack para **venda e gestão de veículos**, desenvolvida com foco em concessionárias e clientes finais. O sistema permite o registro, administração e reserva de veículos, com integração de inteligência artificial e uma interface moderna e responsiva.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+https://github.com/user-attachments/assets/33eed708-c24d-4264-abed-d80130593632
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🚀 Teste você mesmo!
+- Acessar Portfolio: [Vehiql](https://vehiql-hke3ensqw-gabriel-otirbs-projects.vercel.app/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Funcionalidades Principais
 
-## Learn More
+- Cadastro de veículos com suporte a **upload de imagem**
+- Identificação automática de carros por imagem com **Gemini AI**
+- Relatórios de conversão e performance de vendas
+- Gestão de **test drives** com agendamento e controle por parte das concessionárias
+- Controle de usuários com níveis de acesso (cliente/admin)
+- Painel de administração completo para gerenciamento do sistema
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tecnologias Utilizadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Next.js** – Framework React para aplicações web
+- **JavaScript**
+- **Tailwind CSS** – Estilização moderna e responsiva
+- **HTML5**
+- **Clerk** – Autenticação segura e gerenciamento de usuários
+- **Arcjet** – Proteção e segurança da aplicação
+- **Prisma ORM** – Manipulação de banco de dados
+- **Supabase** + **PostgreSQL** – Banco de dados e backend
+- **Gemini AI** – Processamento de imagem e identificação de veículos via inteligência artificial
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔐 Autenticação e Segurança
 
-## Deploy on Vercel
+A aplicação utiliza **Clerk** para autenticação de usuários com suporte completo a autenticação social, gerenciamento de sessões e controle de permissões. Para segurança adicional, **Arcjet** é integrado para proteção contra abusos e automações indesejadas.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤖 Inteligência Artificial
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A identificação de veículos por imagem é realizada através da **Gemini AI**, permitindo que o usuário cadastre um carro apenas enviando uma foto, agilizando o processo de cadastro e melhorando a acurácia das informações.
+
+## 📦 Banco de Dados
+
+O sistema utiliza **PostgreSQL**, integrado com **Supabase**, e manipulado via **Prisma ORM** para garantir performance, tipagem e consistência dos dados.
+
+## 📱 Layout e Interface
+
+A interface é construída com **Tailwind CSS** e **HTML5**, oferecendo um design limpo, moderno e totalmente responsivo, com excelente usabilidade tanto em dispositivos móveis quanto em desktops.
