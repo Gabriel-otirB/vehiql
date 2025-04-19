@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from '@/components/header';
+import Header from '@/components/Header';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from 'sonner';
 
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
                 <a href="https://github.com/Gabriel-otirB"
                   target="_blank"
                   className='gradient-title ml-1 -mr-1'
-                  >Gabriel-otirB
+                >Gabriel-otirB
                 </a>
                 &copy; {new Date().getFullYear()}</p>
             </div>
