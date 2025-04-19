@@ -1,12 +1,12 @@
-import { getAdmin } from "@/actions/admin";
-import Header from "../../../components/header";
 import { notFound } from "next/navigation";
-import React from "react";
-import Sidebar from "./_components/sidebar";
+import Sidebar from './admin/_components/sidebar';
+import { getAdmin } from "@/actions/admin";
+import Header from "@/components/header";
 
-const AdminLayout = async ({ children }) => {
+export default async function AdminLayout({ children }) {
   const admin = await getAdmin();
 
+  // If user not found in our db or not an admin, redirect to 404
   if (!admin.authorized) {
     return notFound();
   }
@@ -19,7 +19,5 @@ const AdminLayout = async ({ children }) => {
       </div>
       <main className="md:pl-56 pt-[80px] h-full">{children}</main>
     </div>
-  )
+  );
 }
-
-export default AdminLayout;
