@@ -7,7 +7,7 @@
 https://github.com/user-attachments/assets/33eed708-c24d-4264-abed-d80130593632
 
 ## 🚀 Teste você mesmo!
-- Acessar Portfolio: [Vehiql](https://vehiql-hke3ensqw-gabriel-otirbs-projects.vercel.app/)
+- Acessar Portfolio: [Vehiql](https://vehiql-brown.vercel.app/)
 
 ## ✨ Funcionalidades Principais
 
