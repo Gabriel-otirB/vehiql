@@ -23,7 +23,6 @@ https://github.com/user-attachments/assets/33eed708-c24d-4264-abed-d80130593632
 - **Next.js** – Framework React para aplicações web
 - **JavaScript**
 - **Tailwind CSS** – Estilização moderna e responsiva
-- **HTML5**
 - **Clerk** – Autenticação segura e gerenciamento de usuários
 - **Arcjet** – Proteção e segurança da aplicação
 - **Prisma ORM** – Manipulação de banco de dados
